@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clínica Healer | Inicio</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        background: #f0f8ff;
+        color: #333;
+    }
+    header {
+        background: #0a0a0a;
+        color: white;
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .logo-img {
+        height: 70px;
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .logo-img:hover {
+        transform: rotate(360deg) scale(1.2);
+    }
+
+    .brand-name {
+        color: white;
+        font-size: 2.5rem;
+        margin: 0;
+        letter-spacing: 1px;
+    }
+    .menu {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    .menu a {
+        background: white;
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .menu a:hover {
+        background: #2ecc71;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+    }
+    .carousel-item img {
+        height: 550px;
+        object-fit: cover;
+        filter: brightness(0.8);
+    }
+
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid #2ecc71;
+    }
+.grid-servicios {
+    display: flex;
+    flex-direction: row;  
+    justify-content: center; 
+    align-items: stretch;
+    gap: 15px;              
+    padding: 40px 20px;
+    width: 100%;            
+}
+
+.contenedor {
+    flex: 1;              
+    max-width: 280px;       
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedor:hover {
+    transform: translateY(-10px);
+}
+
+.contenedor img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;     
+    border-radius: 10px;
+    margin-top: 15px;
+}
+    .contenedor:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        border-color: #2ecc71;
+    }
+
+    .contenedor h3 {
+        color: #2ecc71;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .contenedor p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    .contenedor img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-top: 20px;
+    }
+
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <a href="hospital.html" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+            <img src="img/Overwatch_circle_logo.svg.png" alt="Logo Clínica Healer" class="logo-img">
+            <h1 class="brand-name">Clínica Healer</h1>
+        </a>
+    </div>
+    <nav class="menu">
+        <a href="hospital.html">Inicio</a>
+        <a href="Onlyfans.html">Onlyfans</a>
+        <a href="Supports.html">Supports</a>
+        <a href="Citas.html">Citas</a>
+        <a href="Archivo%20Cl%C3%ADnico.html">Archivo Clínico</a>
+        <a href="https://jcw87.github.io/c2-sans-fight/">Bad</a>
+    </nav>
+</header>
+
+<div id="miCarrusel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#miCarrusel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#miCarrusel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#miCarrusel" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="img/hq720.jpg" class="d-block w-100" alt="Hospital Oasis">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Hospital Oasis</h5>
+                <p>Tu salud es nuestra prioridad número uno.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/intro.jpg" class="d-block w-100" alt="New Queen Street">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Hospital New Queen Street</h5>
+                <p>Tecnología de punta para sanar tus heridas.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/mapa3.webp" class="d-block w-100" alt="Seed">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Ubicación Estratégica</h5>
+                <p>Encuéntranos en las coordenadas exactas de tu bienestar.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#miCarrusel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#miCarrusel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+<section class="grid-servicios">
+    <div class="contenedor">
+        <h3>Bienvenido</h3>
+        <p>Somos una clínica dedicada a Healear como buenos supports contamos con support terreste y de areos.</p>
+        <img src="img/boti.jpg" alt="Bienvenido">
+    </div>
+
+    <div class="contenedor">
+        <h3>Historia</h3>
+        <p>Fundada en 1900 AC, Jesus se inspiro en nosotros.</p>
+        <img src="img/libro.jpg" alt="Historia">
+    </div>
+
+    <div class="contenedor">
+        <h3>Misión</h3>
+        <p>Brindar atención médica de calidad y mejorar la vida humana y lleavr a gente a ala imnortalidad.</p>
+        <img src="img/misiom.jpg" alt="Misión">
+    </div>
+
+    <div class="contenedor">
+        <h3>Visión</h3>
+        <p>Dominar el mundo de la curación y ser líderes con eso llevar hacer P***** al Imss.</p>
+        <img src="img/satr.webp" alt="Visión">
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

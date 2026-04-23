@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Healer - Agendar Cita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f0f8ff; }
+        header { background: #000000; color: white; padding: 15px; }
+        .logo-container { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px; }
+        .logo-img { height: 70px; transition: transform 0.5s; }
+        .logo-img:hover { transform: rotate(360deg) scale(1.2); }
+        .brand-name { color: white; font-size: 2.5rem; margin: 0; letter-spacing: 1px; }
+        .menu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+        .menu a { background: white; color: #000; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; border: 2px solid transparent; }
+        .menu a:hover { background: #000000; color: white; }
+        .contenedor { background: white; margin: 20px auto; padding: 30px; border-radius: 10px; max-width: 600px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #333; }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        input, select, textarea { padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; width: 100%; box-sizing: border-box; }
+        input[type="submit"] { background: #000000; color: white; border: none; cursor: pointer; margin-top: 25px; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
+        input[type="submit"]:hover { background: #333; }
+        input[type="submit"]:disabled { background: #888; cursor: not-allowed; }
+        .boton-volver { display: inline-block; background: white; color: black; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin: 20px; border: 2px solid #ccc; font-weight: bold; transition: 0.3s; }
+        .boton-volver:hover { background: #000000; color: white; }
+        .sheet-container { width: 100%; height: 500px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="img/Overwatch_circle_logo.svg.png" alt="Logo Clínica Healer" class="logo-img">
+        <h1 class="brand-name">Clínica Healer</h1>
+    </div>
+    <nav class="menu">
+        <a href="hospital.html">Inicio</a>
+        <a href="Supports.html">Supports</a>
+        <a href="Citas.html">Citas</a>
+        <a href="Archivo%20Cl%C3%ADnico.html">Archivo Clínico</a>
+    </nav>
+</header>
+
+<div class="contenedor">
+    <h1>Agendar Nueva Cita</h1>
+    <form id="formularioCitas">
+        <label>Nombre Completo:</label>
+        <input type="text" name="nombre" required>
+
+        <label>ID de Overwatch:</label>
+        <input type="text" name="id_overwoach" placeholder="Ej: Mercy#1234">
+
+        <label>Fecha de la Cita:</label>
+        <input type="date" name="fecha_cita" required>
+
+        <label>Motivo de la consulta:</label>
+        <textarea name="motivo_de_consulta" rows="3" placeholder="Describe brevemente tus síntomas..."></textarea>
+
+        <label>¿Qué Doctor vas a Citar?:</label>
+        <input type="text" name="que_doctor_vas_citar" required>
+
+        <label>Sexo:</label>
+        <input type="text" name="sexo" required>
+
+        <input type="submit" value="Confirmar Cita" id="btnAgendar">
+    </form>
+</div>
+
+<div class="contenedor">
+    <h2 style="text-align: center;">Registros Actuales</h2>
+    <div class="sheet-container">
+        <iframe 
+            id="tablaDatos" 
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQwrq83434Tql7Wga7QLoanfGs_eMb4fRcddyrVUY3bUJMdVGKm0phGxqd69cK4N1-6MloaxaOGEsiT/pubhtml?gid=0&single=true" 
+            style="width:100%; height:500px; border:none;" 
+            title="Base de Datos Clínica Healer">
+        </iframe>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <a href="hospital.html" class="boton-volver">Volver al Inicio</a>
+</div>
+
+<script>
+const URL_SCRIPT ="https://script.google.com/macros/s/AKfycbxp5hengVx5tr-Ly4ZUnzyx3v-Y8Pvq2KxBs74rUia00FOLDxbXHZUvy1QbV7ms6i0V/exec";
+
+document.getElementById('formularioCitas').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    const btn = document.getElementById('btnAgendar');
+    const originalText = btn.value;
+
+    btn.value = "Guardando cita...";
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+    const data = new URLSearchParams(formData);
+
+    fetch(URL_SCRIPT, {
+        method: 'POST',
+        mode: 'no-cors', 
+        body: data
+    })
+    .then(() => {
+        alert('✅ ¡Cita guardada correctamente!');
+        this.reset();
+        // Recargar la tabla
+        const iframe = document.getElementById('tablaDatos');
+        iframe.src = iframe.src; 
+    })
+    .catch(error => {
+        alert('❌ Error de conexión.');
+        console.error('Error:', error);
+    })
+    .finally(() => {
+        btn.value = originalText;
+        btn.disabled = false;
+    });
+});
+</script>
+</body>
+</html>

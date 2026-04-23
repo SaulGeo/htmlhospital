@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Healer - Pediatría</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #f0f8ff;
+            color: #333;
+        }
+
+        header {
+            background: #000000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo-img {
+            height: 70px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .logo-img:hover { transform: rotate(360deg) scale(1.2); }
+
+        .brand-name { font-size: 2.5rem; margin: 0; letter-spacing: 1px; }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .menu a {
+            background: white;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .menu a:hover { 
+            background: #444; 
+            color: white; 
+            transform: translateY(-3px);
+        }
+
+        .seccion-principal {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card-info {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .card-info h2, .card-info h3 { 
+            margin-top: 0; 
+            color: #000; 
+            border-left: 5px solid #000;
+            padding-left: 15px;
+        }
+
+        .bloque-contenido {
+            display: flex;
+            align-items: flex-start;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .columna-lateral {
+            max-width: 280px;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .imagen-lateral {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .contenedor-imagen-bebe {
+            width: 100%;
+            max-width: 280px;
+            flex-shrink: 0;
+        }
+
+        .imagen-bebe-corregida {
+            width: 100%;
+            aspect-ratio: 4 / 3; 
+            object-fit: cover; 
+            object-position: center; 
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .info-extra {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px solid #eee;
+        }
+
+        .info-extra h3 { 
+            font-size: 1rem; 
+            margin-bottom: 5px; 
+            color: #d32f2f; 
+            border: none; 
+            padding: 0; 
+        }
+
+        .columna-texto { flex: 1; min-width: 300px; }
+
+        .columna-texto p { line-height: 1.6; font-size: 1.1rem; margin-bottom: 15px; color: #555; }
+
+        .lista-limpia { margin: 0; padding-left: 20px; line-height: 2; }
+
+        .navegacion { text-align: center; margin: 50px 0; }
+
+        .boton-volver {
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 10px;
+            border: 2px solid #000;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton-volver:hover { background: #000; color: white; }
+
+        .contacto {
+            background: #1a1a1a; 
+            color: white;
+            padding: 60px 20px;
+            margin-top: 50px;
+        }
+
+        .contacto h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contacto-contenido {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .columna-footer { flex: 1; min-width: 200px; }
+
+        .redes a {
+            color: #fff;
+            font-size: 24px;
+            margin-right: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .redes a:hover { color: #2ecc71; }
+
+        .info-footer p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccc;
+            margin: 15px 0;
+            font-size: 1rem;
+        }
+
+        .suscripcion { max-width: 250px; }
+
+        .suscripcion p { font-size: 0.9rem; margin-bottom: 10px; color: #fff; }
+
+        .suscripcion input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #333;
+            outline: none;
+        }
+
+        .suscripcion button {
+            width: auto;
+            padding: 6px 20px;
+            background: #2ecc71;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .suscripcion button:hover { background: #27ae60; }
+
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp:hover { transform: scale(1.1); }
+        .whatsapp img { width: 60px; height: 60px; }
+
+        @media (max-width: 768px) {
+            .bloque-contenido, .contacto-contenido { flex-direction: column; align-items: center; text-align: center; }
+            .columna-lateral, .contenedor-imagen-bebe, .columna-footer { max-width: 100%; }
+            .info-footer p { justify-content: center; }
+            .lista-limpia { text-align: left; }
+            .suscripcion { margin: 0 auto; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="img/Overwatch_circle_logo.svg.png" alt="Logo Clínica Healer" class="logo-img">
+        <h1 class="brand-name">Clínica Healer</h1>
+    </div>
+    <nav class="menu">
+        <a href="hospital.html">Inicio</a>
+        <a href="Onlyfans.html">Onlyfans</a>
+        <a href="Supports.html">Supports</a>
+        <a href="Citas.html">Citas</a>
+        <a href="Archivo%20Cl%C3%ADnico.html">Archivo Clínico</a>
+        <a href="https://jcw87.github.io/c2-sans-fight/">Bad</a>
+    </nav>
+</header>
+
+<main class="seccion-principal">
+    <h1 style="text-align: center; margin-bottom: 30px;">Especialidad: Pediatría</h1>
+
+    <div class="card-info">
+        <h2>¿Qué es Pediatría y su función?</h2>
+        <div class="bloque-contenido">
+            <div class="columna-lateral">
+                <img src="img/jef.jpg" alt="Pediatría" class="imagen-lateral">
+                <div class="info-extra">
+                    <h3>¿Hasta qué edad atiende?</h3>
+                    <p>Generalmente desde que nacen hasta los 15–18 años.</p>
+                </div>
+            </div>
+
+            <div class="columna-texto">
+                <p>La pediatría es la rama de la medicina que se encarga de la salud de los bebés, niños y adolescentes.</p>
+                <p>Un pediatra es el médico que:</p>
+                <ul class="lista-limpia">
+                    <li>Revisa el crecimiento y desarrollo del niño</li>
+                    <li>Trata enfermedades comunes (gripa, fiebre, infecciones)</li>
+                    <li>Aplica vacunas</li>
+                    <li>Da recomendaciones sobre alimentación y cuidados</li>
+                    <li>Detecta problemas a tiempo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-info">
+        <h3>¿Cuándo se lleva a un niño al pediatra?</h3>
+        <div class="bloque-contenido">
+            <div class="contenedor-imagen-bebe">
+                <img src="img/baby.jpg" alt="Consulta Pediatra" class="imagen-bebe-corregida">
+            </div>
+            <div class="columna-texto">
+                <ul class="lista-limpia">
+                    <li>Cuando está enfermo (tos, fiebre, dolor)</li>
+                    <li>Para aplicación de vacunas</li>
+                    <li>Revisiones de rutina (aunque esté sano)</li>
+                    <li>Control preventivo de peso y estatura</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="navegacion">
+        <a href="hospital.html" class="boton-volver">Volver al Inicio</a>
+        <a href="Onlyfans.html" class="boton-volver">Regresar a Onlyfans</a>
+    </div>
+</main>
+
+<section class="contacto">
+    <h2>Contacto</h2>
+    <div class="contacto-contenido">
+        <div class="columna-footer">
+            <p><strong>SÍGUENOS</strong></p>
+            <div class="redes">
+                <a href="https://www.instagram.com/zzz.official.en/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/groups/566750732076408" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+
+        <div class="columna-footer info-footer">
+            <p><strong>DATOS DE CONTACTO</strong></p>
+            <p><i class="fas fa-paper-plane" style="font-size: 0.9rem;"></i> Divicionsupport@gmail.com</p>
+            <p><i class="fas fa-location-dot" style="font-size: 0.9rem;"></i> Base Healer</p>
+        </div>
+
+        <div class="columna-footer suscripcion">
+            <p><strong>Actualizaciones</strong></p>
+            <form action="mailto:alejandrohp954@gmail.com" method="post" enctype="text/plain">
+                <input type="email" placeholder="Correo..." required>
+                <button type="submit">Seguir</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<a href="https://wa.me/TUNUMERO" class="whatsapp" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+</body>
+</html>
